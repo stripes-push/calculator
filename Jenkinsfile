@@ -11,5 +11,15 @@ steps {
 sh "mvn test"
 }
 }
+stage("Code coverage") {
+steps {
+sh "mvn test"
+publishHTML (target: [
+reportDir: 'target/site/jacoco',
+reportFiles: 'index.html',
+reportName: "JaCoCo Report"
+])
+}
+}
 }
 }
